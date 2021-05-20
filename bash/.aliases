@@ -23,6 +23,9 @@ alias gr='git rebase'
 alias grm='git rebase master'
 alias gpf='git push --force'
 alias gpl='git pull'
+alias gdmb='git branch --merged| egrep -v "(^\*|master)" | xargs git branch -d'
+alias gdub='git branch --no-merged| egrep -v "(^\*|master)" | xargs git branch -d'
+
 
 # Dualhead aliases
 alias enable-dual-home='xrandr --output eDP1 --auto --primary --mode 1920x1080 --output DP2 --auto --mode 1920x1080 --right-of eDP1'
@@ -32,9 +35,3 @@ alias dm='disable-dual'
 
 # Paths
 alias development='cd ~/development'
-
-# Loadsmart
-alias kprod='kubectl --context=arn:aws:eks:us-east-1:845156828388:cluster/ls-main-cluster-production'
-alias ksb='kubectl --context=arn:aws:eks:us-east-1:845156828388:cluster/ls-main-cluster-sandbox'
-alias kst='kubectl --context=arn:aws:eks:us-east-1:571579881413:cluster/ls-main-cluster-staging'
-alias kqa='kubectl --context=arn:aws:eks:us-east-1:571579881413:cluster/ls-main-cluster-qa'
