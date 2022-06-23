@@ -37,4 +37,3 @@ alias dm='disable-dual'
 alias development='cd ~/development'
 
 alias black='python3 -m black'
-alias backend='cd ~/development/reisift/back-end'

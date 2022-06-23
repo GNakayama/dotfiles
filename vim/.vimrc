@@ -5,9 +5,6 @@ set hls
 set is
 set nrformats=
 
-filetype off     " required
-syntax enable
-
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -19,6 +16,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " set the runtime path to include Vundle and initialize
+filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -51,7 +49,12 @@ Plugin 'mxw/vim-jsx'
 Plugin 'elzr/vim-json'
 Plugin 'w0rp/ale'
 Plugin 'igemnace/vim-template-lite'
-Bundle 'rubik/vim-radon'
+Plugin 'junegunn/vader.vim'
+Plugin 'rubik/vim-radon'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+syntax enable
 
 """ VIM-TEMPLATE-LITE {{{
 " declare mappings of patterns to templates to load
@@ -104,9 +107,6 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'importjs', 'prettier'],
 \}
-
-call vundle#end()            " required
-filetype plugin indent on    " required
 
 let g:SimpylFold_docstring_preview=1
 
@@ -278,3 +278,7 @@ let g:python3_host_prog = '/bin/python3'
 
 " Radon
 let g:radon_always_on = 1
+
+" Moving code blocks
+vnoremap < <gv
+vnoremap > >gv
