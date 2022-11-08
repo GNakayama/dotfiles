@@ -37,3 +37,4 @@ alias dm='disable-dual'
 alias development='cd ~/development'
 
 alias black='python3 -m black'
+alias elastic_memory='sudo sysctl -w vm.max_map_count=262144'
