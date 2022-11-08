@@ -65,8 +65,11 @@ let g:template_lite_mappings = {
 
 " All Plugins must be added before the following line
 
-" ISort
-autocmd BufWritePost *.py silent! execute ':Isort'
+" pycln
+function Pycln()
+	autocmd BufWritePost *.py silent! execute ':!pycln -a -x .'
+	execute ':e'
+endfunction
 
 " Terraform
 let g:terraform_fmt_on_save=1
@@ -140,7 +143,7 @@ noremap <Leader>p "+p
 set clipboard=unnamedplus
 
 " Identation
-au BufNewFile,BufRead *.py,*.html,*.cpp,*.hpp,*.c,*.h,*.rb
+au BufNewFile,BufRead *.py,*.html,*.cpp,*.hpp,*.c,*.h,*.rb,*.vim
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
