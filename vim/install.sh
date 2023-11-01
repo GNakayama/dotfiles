@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# Functions
-function install_font_icons {
-  /bin/git clone https://github.com/ryanoasis/nerd-fonts.git
-  cd nerd-fonts/
-  ./install.sh Mononoki
-  cd ../
-  /bin/rm -rf nerd-fonts/
-}
-
 # Creates backup directory
 if [ ! -d "$HOME/.vim/bundle/" ]; then
 	/bin/mkdir -p "$HOME/.vim/tmp/backup"
@@ -46,11 +37,6 @@ fi
 /bin/ln .vimrc $HOME/.vimrc
 /bin/ln -d ./templates $HOME/.vim/templates
 /bin/vim +PluginInstall +qall
-
-# Install mononoki font if it is not installed
-#if ! ls $HOME/.local/share/fonts/NerdFonts/mononoki* 1> /dev/null 2>&1; then
-#	install_font_icons
-#fi
 
 # Install ctags if it is not installed
 if ! yay -Qi universal-ctags-git 1> /dev/null 2>&1; then
