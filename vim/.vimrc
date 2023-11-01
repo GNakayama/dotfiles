@@ -40,7 +40,6 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rainerborene/vim-reek'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'hashivim/vim-terraform'
 Plugin 'fatih/vim-go'
 Plugin 'fisadev/vim-isort'
@@ -51,6 +50,7 @@ Plugin 'w0rp/ale'
 Plugin 'igemnace/vim-template-lite'
 Plugin 'junegunn/vader.vim'
 Plugin 'rubik/vim-radon'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -250,8 +250,6 @@ imap <right> <nop>
 let g:reek_line_limit = 110
 let g:reek_always_show = 0
 let g:reek_on_loading = 0
-
-set guifont=Mononoki\ Nerd\ Font\ 11
 
 nmap <silent> <C-E> :q<CR>
 
