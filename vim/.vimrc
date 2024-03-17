@@ -86,7 +86,7 @@ endfunction
 " ISort
 function FormatPython()
        execute ':Isort'
-       execute ':Black'
+       "execute ':Black'
 endfunction
 
 autocmd BufWritePost *.py silent! execute ':call FormatPython()'

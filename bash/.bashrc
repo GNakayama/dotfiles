@@ -43,3 +43,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export GPG_TTY=$(tty)
 export PATH="~/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
