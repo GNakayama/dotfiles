@@ -30,7 +30,7 @@ fi
 # Completion
 git_completion_file="/usr/share/git/completion/git-completion.bash"
 if [ -f $git_completion_file ]; then
-	. $git_completion_file 
+	. $git_completion_file
 fi
 
 # Allows ctr+s in terminal
@@ -41,4 +41,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
 export PATH=$PATH:/usr/local/go/bin
+export GPG_TTY=$(tty)
+export PATH="~/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"

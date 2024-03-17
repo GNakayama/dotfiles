@@ -20,9 +20,14 @@
   added = yellow
   changed = green
   untracked = cyan
-
 [rebase]
   autoStash = true
-
 [checkout]
   autoStash = true
+[user]
+	name = Guilherme
+	email = guilherme.nakayama.s@gmail.com
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
