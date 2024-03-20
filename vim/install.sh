@@ -42,3 +42,5 @@ fi
 if ! yay -Qi universal-ctags-git 1> /dev/null 2>&1; then
 	yay universal-ctags-git
 fi
+
+sudo pacman -S python-pynvim
