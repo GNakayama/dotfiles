@@ -42,6 +42,9 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rainerborene/vim-reek'
 Plugin 'hashivim/vim-terraform'
 Plugin 'fatih/vim-go'
+Plugin 'pangloss/vim-javascript'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'fisadev/vim-isort'
 Plugin 'avakhov/vim-yaml'
 Plugin 'mxw/vim-jsx'
@@ -50,11 +53,18 @@ Plugin 'w0rp/ale'
 Plugin 'igemnace/vim-template-lite'
 Plugin 'junegunn/vader.vim'
 Plugin 'rubik/vim-radon'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'ryanoasis/vim-devicons'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 syntax enable
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 """ VIM-TEMPLATE-LITE {{{
 " declare mappings of patterns to templates to load
@@ -86,7 +96,7 @@ endfunction
 " ISort
 function FormatPython()
        execute ':Isort'
-       execute ':Black'
+       "execute ':Black'
 endfunction
 
 autocmd BufWritePost *.py silent! execute ':call FormatPython()'
