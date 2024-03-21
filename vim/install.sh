@@ -35,7 +35,7 @@ fi
 
 
 /bin/ln .vimrc $HOME/.vimrc
-/bin/ln -d ./templates $HOME/.vim/templates
+/bin/ln -s $(/bin/pwd)/templates $HOME/.vim/templates
 /bin/vim +PluginInstall +qall
 
 # Install ctags if it is not installed
