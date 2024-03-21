@@ -73,6 +73,13 @@ let g:template_lite_mappings = {
   \  '*.hoc.jsx': 'react/hoc.jsx',
   \}
 
+function Multiple_cursors_before()
+  let g:deoplete#disable_auto_complete = 1
+endfunction
+function Multiple_cursors_after()
+  let g:deoplete#disable_auto_complete = 0
+endfunction
+
 " All Plugins must be added before the following line
 
 " pycln
