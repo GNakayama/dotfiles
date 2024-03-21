@@ -73,6 +73,13 @@ let g:template_lite_mappings = {
   \  '*.hoc.jsx': 'react/hoc.jsx',
   \}
 
+function Multiple_cursors_before()
+  let g:deoplete#disable_auto_complete = 1
+endfunction
+function Multiple_cursors_after()
+  let g:deoplete#disable_auto_complete = 0
+endfunction
+
 " All Plugins must be added before the following line
 
 " pycln
@@ -96,7 +103,7 @@ endfunction
 " ISort
 function FormatPython()
        execute ':Isort'
-       "execute ':Black'
+       execute ':Black'
 endfunction
 
 autocmd BufWritePost *.py silent! execute ':call FormatPython()'
@@ -202,6 +209,7 @@ function! StartUpNerdtree()
         endif
 endfunction
 
+let g:NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * call StartUpNerdtree()
@@ -234,12 +242,17 @@ let g:move_key_modifier = 'A'
 "Switch split vertical
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
+noremap <C-k> <C-W>k
+noremap <C-j> <C-W>j
+noremap  q :q<CR>
+noremap  <C-t> :vnew<CR>
+
 
 "Remap
-noremap  <F6> :NERDTreeTabsToggle<CR>
+noremap  <F6> :NERDTreeToggle<CR>
 noremap  <TAB> :tabp<CR>
 noremap  <S-TAB> :tabn<CR>
-nmap <silent> <C-D> :NERDTreeToggle<CR>
+nmap <silent> <C-D> :NERDTreeFind<CR>
 
 "Tagbar
 noremap <F8> :TagbarToggle<CR>
