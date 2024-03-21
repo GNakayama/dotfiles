@@ -176,7 +176,7 @@ noremap <Leader>p "+p
 set clipboard=unnamedplus
 
 " Identation
-au BufNewFile,BufRead *.py,*.html,*.cpp,*.hpp,*.c,*.h,*.rb,*.vim
+au BufNewFile,BufRead *.py,*.html,*.cpp,*.hpp,*.c,*.h,*.rb,*.vim,*.elm
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
