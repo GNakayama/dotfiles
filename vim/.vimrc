@@ -73,6 +73,22 @@ let g:template_lite_mappings = {
   \  '*.hoc.jsx': 'react/hoc.jsx',
   \}
 
+" Makes vim-template-lite work with NerdTree on BufRead
+augroup VimTemplatesLite
+  autocmd!
+  autocmd User TemplateLoad silent! execute "%S/skeleton-name/" . expand('%:t:r:r') . "/g"
+
+  for [pattern, template] in items(g:template_lite_mappings)
+      execute 'autocmd BufRead' pattern "call s:ApplyTemplate('" . template . "')"
+  endfor
+
+  function! s:ApplyTemplate(template, ...)
+    if getfsize(expand('%')) == 0
+       execute "call template_lite#autocmd_load('" . a:template . "')"
+    endif
+  endfun
+augroup END
+
 function Multiple_cursors_before()
   let g:deoplete#disable_auto_complete = 1
 endfunction
