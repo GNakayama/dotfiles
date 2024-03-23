@@ -176,7 +176,7 @@ noremap <Leader>p "+p
 set clipboard=unnamedplus
 
 " Identation
-au BufNewFile,BufRead *.py,*.html,*.cpp,*.hpp,*.c,*.h,*.rb,*.vim
+au BufNewFile,BufRead *.py,*.html,*.cpp,*.hpp,*.c,*.h,*.rb,*.vim,*.elm
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -186,7 +186,7 @@ au BufNewFile,BufRead *.py,*.html,*.cpp,*.hpp,*.c,*.h,*.rb,*.vim
     \ set fileformat=unix |
 "
 " Identation JS, JSX, JSON
-au BufNewFile,BufRead *.js,*.jsx,*.scss,*.json
+au BufNewFile,BufRead *.ts,*.js,*.jsx,*.scss,*.json
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
