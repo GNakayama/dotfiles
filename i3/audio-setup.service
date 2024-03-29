@@ -1,0 +1,7 @@
+[Unit]
+Description=Runs script to fix samsung audio
+
+[Service]
+User=root
+WorkingDirectory=/usr/local/sbin
+ExecStart=necessary-verbs.sh

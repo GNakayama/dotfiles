@@ -410,4 +410,4 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-exec setxkbmap -layout us -variant intl
+# exec setxkbmap -layout us -variant intl
