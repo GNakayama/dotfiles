@@ -31,3 +31,7 @@
 	rebase = true
 [push]
 	autoSetupRemote = true
+[includeIf "gitdir:~/development/clipboard/"]
+    path = ~/development/clipboard/.gitconfig
+[core]
+	editor = vim
