@@ -57,6 +57,7 @@ Plugin 'Shougo/deoplete.nvim'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'earthly/earthly'
 
 
 call vundle#end()            " required
