@@ -58,6 +58,10 @@ Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'earthly/earthly'
+Plugin 'github/copilot.vim'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+
 
 
 call vundle#end()            " required
@@ -323,3 +327,10 @@ let g:radon_always_on = 1
 " Moving code blocks
 vnoremap < <gv
 vnoremap > >gv
+
+lua << EOF
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+  -- See Configuration section for rest
+}
+EOF
