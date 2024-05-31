@@ -15,8 +15,7 @@ set foldlevel=99
 " Folding with spacebar
 nnoremap <space> za
 
-" set the runtime path to include Vundle and initialize
-filetype off     " required
+" set the runtime path to include Vundle and initialize filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -29,8 +28,6 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'ambv/black'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tpope/vim-commentary'
@@ -38,7 +35,6 @@ Plugin 'matze/vim-move'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rainerborene/vim-reek'
 Plugin 'hashivim/vim-terraform'
 Plugin 'fatih/vim-go'
@@ -69,7 +65,8 @@ filetype plugin indent on    " required
 syntax enable
 
 " Use deoplete.
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
+let g:deoplete#disable_auto_complete = 1
 
 """ VIM-TEMPLATE-LITE {{{
 " declare mappings of patterns to templates to load
@@ -223,17 +220,14 @@ set nu
 "Ignore this files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
-" Only open nerdtree if no file was specified on startup
-function! StartUpNerdtree()
+" Only open Neotree if no file was specified on startup
+function! StartUpNeotree()
 	if 0 == argc()
-		NERDTree
+		Neotree
         endif
 endfunction
 
-let g:NERDTreeShowHidden=1
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
-autocmd VimEnter * call StartUpNerdtree()
+autocmd VimEnter * call StartUpNeotree()
 
 " Backups
 if has('persistent_undo')
@@ -300,7 +294,7 @@ nmap <silent> <C-E> :q<CR>
 " Fugitive keybindings
 nmap <silent> <up> :Gread<CR>
 nmap <silent> <down> :Gdiff<CR>
-nmap <silent> <left> :Gstatus<CR>
+nmap <silent> <left> :Gstatus<CR>/Ner
 nmap <silent> <right> :Gblame<CR>
 nmap <silent> <C-up> :Git push<CR>
 nmap <silent> <C-down> :Git pull<CR>
@@ -329,8 +323,131 @@ vnoremap < <gv
 vnoremap > >gv
 
 lua << EOF
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+"terryma/vim-multiple-cursors",
+'tmhedberg/SimpylFold',
+'vim-scripts/indentpython.vim',
+'ambv/black',
+'jnurmine/Zenburn',
+'altercation/vim-colors-solarized',
+'tpope/vim-fugitive',
+-- 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+'tpope/vim-commentary',
+'matze/vim-move',
+'majutsushi/tagbar',
+'Yggdroot/indentLine',
+'ctrlpvim/ctrlp.vim',
+'rainerborene/vim-reek',
+'hashivim/vim-terraform',
+'fatih/vim-go',
+'pangloss/vim-javascript',
+'leafgarland/typescript-vim',
+'maxmellon/vim-jsx-pretty',
+'fisadev/vim-isort',
+'avakhov/vim-yaml',
+'mxw/vim-jsx',
+'elzr/vim-json',
+'w0rp/ale',
+'igemnace/vim-template-lite',
+'junegunn/vader.vim',
+'rubik/vim-radon',
+'Shougo/deoplete.nvim',
+'roxma/nvim-yarp',
+'roxma/vim-hug-neovim-rpc',
+'github/copilot.vim',
+{
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
+},
+{
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+},
+{'glepnir/template.nvim', cmd = {'Template','TemProject'}, config = function()
+    require('template').setup({
+        -- config in there
+    })
+end},
+{
+  "antosha417/nvim-lsp-file-operations",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-neo-tree/neo-tree.nvim",
+  },
+  config = function()
+    require("lsp-file-operations").setup()
+  end,
+},
+{
+  "smoka7/multicursors.nvim",
+  event = "VeryLazy",
+  dependencies = {
+      'smoka7/hydra.nvim',
+  },
+  opts = {},
+  cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+  keys = {
+        {
+            mode = { 'v', 'n' },
+            '<Leader>m',
+            '<cmd>MCstart<cr>',
+            desc = 'Create a selection for selected text or word under the cursor',
+        },
+  },
+},
+{
+  "pmizio/typescript-tools.nvim",
+  dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  opts = {},
+},
+{
+  "CopilotC-Nvim/CopilotChat.nvim",
+  branch = "canary",
+  dependencies = {
+    { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+    { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+  },
+  opts = {
+    debug = true, -- Enable debugging
+    -- See Configuration section for rest
+  },
+  -- See Commands section for default commands if you want to lazy load on them
+},
+})
+
+require("lsp-file-operations").setup()
+
 require("CopilotChat").setup {
   debug = true, -- Enable debugging
   -- See Configuration section for rest
 }
+
 EOF
