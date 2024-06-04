@@ -38,6 +38,24 @@ fi
 /bin/ln -s $(/bin/pwd)/templates $HOME/.vim/templates
 /bin/vim +PluginInstall +qall
 
+# Install neovim
+if [ ! -d "$HOME/.config/nvim/" ]; then
+	/bin/mkdir -p "$HOME/.config/nvim"
+fi
+
+if [ -f "$HOME/.config/nvim/init.vim" ]; then
+	/bin/rm "$HOME/.config/nvim/init.vim"
+fi
+
+/bin/ln init.vim $HOME/.config/nvim/init.vim
+
+/bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-json coc-sqlfluff coc-go coc-terraform coc-yaml coc-lua' +qall
+
+if ! yay -Qi nvim 1> /dev/null 2>&1; then
+	yay neovim
+	yay tree-sitter
+fi
+
 # Install ctags if it is not installed
 if ! yay -Qi universal-ctags-git 1> /dev/null 2>&1; then
 	yay universal-ctags-git
