@@ -15,7 +15,8 @@ set foldlevel=99
 " Folding with spacebar
 nnoremap <space> za
 
-" set the runtime path to include Vundle and initialize filetype off     " required
+" set the runtime path to include Vundle and initialize
+filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -28,6 +29,8 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'ambv/black'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tpope/vim-commentary'
@@ -35,6 +38,7 @@ Plugin 'matze/vim-move'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rainerborene/vim-reek'
 Plugin 'hashivim/vim-terraform'
 Plugin 'fatih/vim-go'
@@ -54,10 +58,6 @@ Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'earthly/earthly'
-Plugin 'github/copilot.vim'
-Plugin 'nvim-lua/plenary.nvim'
-Plugin 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
-
 
 
 call vundle#end()            " required
@@ -65,8 +65,7 @@ filetype plugin indent on    " required
 syntax enable
 
 " Use deoplete.
-let g:deoplete#enable_at_startup = 0
-let g:deoplete#disable_auto_complete = 1
+let g:deoplete#enable_at_startup = 1
 
 """ VIM-TEMPLATE-LITE {{{
 " declare mappings of patterns to templates to load
@@ -220,14 +219,17 @@ set nu
 "Ignore this files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
-" Only open Neotree if no file was specified on startup
-function! StartUpNeotree()
+" Only open nerdtree if no file was specified on startup
+function! StartUpNerdtree()
 	if 0 == argc()
-		Neotree
+		NERDTree
         endif
 endfunction
 
-autocmd VimEnter * call StartUpNeotree()
+let g:NERDTreeShowHidden=1
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+autocmd VimEnter * call StartUpNerdtree()
 
 " Backups
 if has('persistent_undo')
@@ -294,7 +296,7 @@ nmap <silent> <C-E> :q<CR>
 " Fugitive keybindings
 nmap <silent> <up> :Gread<CR>
 nmap <silent> <down> :Gdiff<CR>
-nmap <silent> <left> :Gstatus<CR>/Ner
+nmap <silent> <left> :Gstatus<CR>
 nmap <silent> <right> :Gblame<CR>
 nmap <silent> <C-up> :Git push<CR>
 nmap <silent> <C-down> :Git pull<CR>
