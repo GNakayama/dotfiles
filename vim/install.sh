@@ -49,7 +49,7 @@ fi
 
 /bin/ln init.vim $HOME/.config/nvim/init.vim
 
-/bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-json coc-sqlfluff coc-go coc-terraform coc-yaml coc-lua' +qall
+/bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-json coc-sqlfluff coc-go coc-yaml coc-lua' +qall
 
 if ! yay -Qi nvim 1> /dev/null 2>&1; then
 	yay neovim
