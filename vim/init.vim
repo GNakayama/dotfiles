@@ -42,7 +42,6 @@ require("lazy").setup({
 'tpope/vim-commentary',
 'matze/vim-move',
 'github/copilot.vim',
-'tpope/vim-fugitive',
 "terryma/vim-multiple-cursors",
 'tmhedberg/SimpylFold',
 {
@@ -57,6 +56,13 @@ require("lazy").setup({
 {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
+},
+{
+  'tpope/vim-fugitive',
+  lazy = false,
+  cmd = {
+    "G", "Git", "Gblame", "Gdiffsplit", "Gdiff", "Gstaus", "Gpush", "Git push", "Git pull", "Gpull", "Gcommit"
+  },
 },
 {
   "folke/tokyonight.nvim",
@@ -302,12 +308,12 @@ nmap <silent> <C-E> :q<CR>
 
 " Fugitive keybindings
 nmap <silent> <up> :Gread<CR>
-nmap <silent> <down> :Gdiff<CR>
-nmap <silent> <left> :Gstatus<CR>/Ner
-nmap <silent> <right> :Gblame<CR>
+nmap <silent> <down> :Git diff<CR>
+nmap <silent> <left> :Git status<CR>/Ner
+nmap <silent> <right> :Git blame<CR>
 nmap <silent> <C-up> :Git push<CR>
 nmap <silent> <C-down> :Git pull<CR>
-nmap <silent> <C-left> :Gcommit<CR>
+nmap <silent> <C-left> :Git commit<CR>
 
 " Keybindings
 noremap <esc>[1;5D <CLeft>
