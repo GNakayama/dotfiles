@@ -61,6 +61,10 @@ export GPG_TTY=$(tty)
 export PATH="~/.local/share/gem/ruby/3.2.0/bin:$PATH"
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+# Lua
+export PATH="$HOME/.luarocks/bin:$PATH"
+export LUA_PATH="$HOME/development/projects/dotfiles/vim:$LUA_PATH"
+
 
 # Lua
 export PATH="$HOME/.luarocks/bin:$PATH"
