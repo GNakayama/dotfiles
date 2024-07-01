@@ -50,6 +50,10 @@ export PATH=$PATH:/usr/local/go/bin
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+# Lua
+export PATH="$HOME/.luarocks/bin:$PATH"
+export LUA_PATH="$HOME/development/projects/dotfiles/vim:$LUA_PATH"
+
 
 cdnvm() {
     command cd "$@" || return $?
