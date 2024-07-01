@@ -118,3 +118,7 @@ end},
 },
 {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
 })
+
+require('plugins.neo-tree')
+require('plugins.telescope')
+require('plugins.coc')
