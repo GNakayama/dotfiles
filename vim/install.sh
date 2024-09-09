@@ -22,7 +22,7 @@ fi
 
 # Install Vundle plugin manager
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-	/bin/git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+	/bin/git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vima
 fi
 
 if [ -f "$HOME/.vimrc" ]; then
@@ -43,11 +43,12 @@ if [ ! -d "$HOME/.config/nvim/" ]; then
 	/bin/mkdir -p "$HOME/.config/nvim"
 fi
 
-if [ -f "$HOME/.config/nvim/init.vim" ]; then
-	/bin/rm "$HOME/.config/nvim/init.vim"
+if [ -f "$HOME/.config/nvim/init.lua" ]; then
+	/bin/rm "$HOME/.config/nvim/init.lua"
 fi
 
-/bin/ln init.vim $HOME/.config/nvim/init.vim
+/bin/ln init.lua $HOME/.config/nvim/init.lua
+/bin/cp -R lua $HOME/.config/nvim/init.lua
 
 /bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-json coc-sqlfluff coc-go coc-yaml coc-lua' +qall
 
