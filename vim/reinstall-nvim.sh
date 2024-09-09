@@ -10,6 +10,7 @@ if [ -f "$HOME/.config/nvim/coc-settings.json" ]; then
 	/bin/rm "$HOME/.config/nvim/coc-settings.json"
 fi
 
-/bin/ln coc-settings.json $HOME/.config/nvim/coc-settings.jsona
+/bin/ln coc-settings.json $HOME/.config/nvim/coc-settings.json
 
 /bin/cp -R lua $HOME/.config/nvim
+/bin/cp -R templates $HOME/.config/nvim
