@@ -25,10 +25,6 @@ if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
 	/bin/git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vima
 fi
 
-if [ -f "$HOME/.vimrc" ]; then
-	/bin/rm "$HOME/.vimrc"
-fi
-
 if [ -f "$HOME/.vim/templates" ]; then
 	/bin/rm -r "$HOME/.vim/templates"
 fi
@@ -48,7 +44,14 @@ if [ -f "$HOME/.config/nvim/init.lua" ]; then
 fi
 
 /bin/ln init.lua $HOME/.config/nvim/init.lua
-/bin/cp -R lua $HOME/.config/nvim/init.lua
+
+if [ -f "$HOME/.config/nvim/coc-settings.json" ]; then
+	/bin/rm "$HOME/.config/nvim/coc-settings.json"
+fi
+
+/bin/ln coc-settings.json $HOME/.config/nvim/coc-settings.jsona
+
+/bin/cp -R lua $HOME/.config/nvim
 
 /bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-json coc-sqlfluff coc-go coc-yaml coc-lua' +qall
 
