@@ -52,6 +52,7 @@ fi
 /bin/ln coc-settings.json $HOME/.config/nvim/coc-settings.jsona
 
 /bin/cp -R lua $HOME/.config/nvim
+/bin/cp -R templates $HOME/.config/nvim
 
 /bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-json coc-sqlfluff coc-go coc-yaml coc-lua' +qall
 
