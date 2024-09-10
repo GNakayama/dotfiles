@@ -79,23 +79,6 @@ require("lazy").setup({
     })
 end},
 {
-  "smoka7/multicursors.nvim",
-  event = "VeryLazy",
-  dependencies = {
-      'smoka7/hydra.nvim',
-  },
-  opts = {},
-  cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-  keys = {
-        {
-            mode = { 'v', 'n' },
-            '<Leader>m',
-            '<cmd>MCstart<cr>',
-            desc = 'Create a selection for selected text or word under the cursor',
-        },
-  },
-},
-{
   "pmizio/typescript-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   opts = {},
@@ -117,8 +100,20 @@ end},
 'nvim-telescope/telescope.nvim', tag = '0.1.6',
   dependencies = { 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'}
 },
-{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
-})
+{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+{
+  "pasky/claude.vim",
+  lazy = false,
+  config = function()
+    -- Load API key from environment variable
+    local api_key = os.getenv("ANTHROPIC_API_KEY")
+    if api_key then
+      vim.g.claude_api_key = api_key
+    else
+      vim.notify("ANTHROPIC_API_KEY environment variable is not set", vim.log.levels.WARN)
+    end
+  end,
+}})
 
 require('plugins.neo-tree')
 require('plugins.telescope')
