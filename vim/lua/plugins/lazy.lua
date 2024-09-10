@@ -14,30 +14,30 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-'vim-scripts/indentpython.vim',
-'ambv/black',
+"vim-scripts/indentpython.vim",
+"ambv/black",
 
 -- Show identation
-'Yggdroot/indentLine',
+"Yggdroot/indentLine",
 -- Useful vim plugins
-'tpope/vim-commentary',
-'matze/vim-move',
-'github/copilot.vim',
-'tpope/vim-fugitive',
+"tpope/vim-commentary",
+"matze/vim-move",
+"github/copilot.vim",
+"tpope/vim-fugitive",
 "terryma/vim-multiple-cursors",
-'tmhedberg/SimpylFold',
+"tmhedberg/SimpylFold",
 {
-    's1n7ax/nvim-window-picker',
-    name = 'window-picker',
-    event = 'VeryLazy',
-    version = '2.*',
+    "s1n7ax/nvim-window-picker",
+    name = "window-picker",
+    event = "VeryLazy",
+    version = "2.*",
     config = function()
-        require'window-picker'.setup()
+        require"window-picker".setup()
     end,
 },
 {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" }
 },
 {
   "folke/tokyonight.nvim",
@@ -72,12 +72,18 @@ require("lazy").setup({
     -- refer to the configuration section below
   }
 },
-{'glepnir/template.nvim', cmd = {'Template','TemProject'}, config = function()
-    require('template').setup({
+{"glepnir/template.nvim", cmd = {"Template","TemProject"}, config = function()
+    require("template").setup({
 		temp_dir = "~/.config/nvim/templates",
         -- config in there
     })
 end},
+{
+  "neovim/nvim-lspconfig",
+  config = function()
+    require("lspconfig.pyright").setup({})
+  end,
+},
 {
   "pmizio/typescript-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -97,10 +103,10 @@ end},
   -- See Commands section for default commands if you want to lazy load on them
 },
 {
-'nvim-telescope/telescope.nvim', tag = '0.1.6',
-  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'}
+"nvim-telescope/telescope.nvim", tag = "0.1.6",
+  dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter"}
 },
-{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+{"akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons"},
 {
   "pasky/claude.vim",
   lazy = false,
@@ -115,6 +121,6 @@ end},
   end,
 }})
 
-require('plugins.neo-tree')
-require('plugins.telescope')
-require('plugins.coc')
+require("plugins.neo-tree")
+require("plugins.telescope")
+require("plugins.coc")
