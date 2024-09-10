@@ -29,15 +29,6 @@ require('configs.maps.fugitive')
 
 --map <Leader>D :call InsertLine()<CR>
 
----- copy and paste to/from vIM and the clipboard
---noremap <Leader>Y "*y
---noremap <Leader>P "*p
---noremap <Leader>y "+y
---noremap <Leader>p "+p
-
----- access system clipboard
---set clipboard=unnamedplus
-
 ---- Powerline
 --set laststatus=2
 --set t_Co=256
@@ -64,3 +55,14 @@ require('configs.maps.fugitive')
 --map k gk
 
 --let g:python3_host_prog = '/bin/python3'
+
+---- Keybindings
+--noremap <esc>[1;5D <CLeft>
+--inoremap <silent> <C-S> <C-C>:update<CR>
+--noremap <silent> <C-S> :update<CR>
+--noremap <silent> <CLeft-L> :copen<CR>
+
+--let g:python3_host_prog = '/bin/python3'
+
+--map j gj
+--map k gk

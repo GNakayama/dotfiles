@@ -1,4 +1,6 @@
 require("plugins.lazy")
+require("plugins.neo-tree")
+require("plugins.telescope")
 require("configs.default")
 require("configs.maps")
 
