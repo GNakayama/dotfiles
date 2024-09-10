@@ -135,13 +135,12 @@ function zoomOutTerm() {
 alias zi=zoomInTerm
 alias zo=zoomOutTerm
 
-bind "'[A': zoomInTerm" # Ctrl + Up
-bind "'[B': zoomOutTerm" # Ctrl + Down
+bind -x '"[A":"zi"' # Alt + UP
+bind -x '"[B":"zo"' # Alt + Down
+
 
 baseFontZoom="$zoomCommandPrefix$fontSize\""
 eval $baseFontZoom
-# sets up the base Zoom and Font for Terminal
-#
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
