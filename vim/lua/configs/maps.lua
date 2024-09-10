@@ -1,6 +1,9 @@
 require('configs.maps.navigation')
 require('configs.maps.fugitive')
 
+---- Press Space to turn off highlighting and clear any message already displayed.
+
+--:nnoremap <C-Space> :nohlsearch<Bar>:echo<CR>
 ---- Folding with spacebar
 --nnoremap <space> za
 

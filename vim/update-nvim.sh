@@ -19,15 +19,16 @@ fi
 /bin/mkdir -p "$HOME/.config/nvim/lua/configs/maps"
 /bin/mkdir -p "$HOME/.config/nvim/lua/plugins"
 
-/bin/ln lua/configs/maps/fugitive.lua $HOME/.config/nvim/lua/configs/maps/fugitive.lua
-/bin/ln lua/configs/maps/navigation.lua $HOME/.config/nvim/lua/configs/maps/navigation.lua
-/bin/ln lua/configs/default.lua $HOME/.config/nvim/lua/configs/default.lua
-/bin/ln lua/configs/maps.lua $HOME/.config/nvim/lua/configs/maps.lua
-/bin/ln lua/configs/identation.lua $HOME/.config/nvim/lua/configs/identation.lua
-/bin/ln lua/configs/backup.lua $HOME/.config/nvim/lua/configs/backup.lua
-/bin/ln lua/plugins/coc.lua $HOME/.config/nvim/lua/plugins/coc.lua
-/bin/ln lua/plugins/lazy.lua $HOME/.config/nvim/lua/plugins/lazy.lua
-/bin/ln lua/plugins/neo-tree.lua $HOME/.config/nvim/lua/plugins/neo-tree.lua
-/bin/ln lua/plugins/telescope.lua $HOME/.config/nvim/lua/plugins/telescope.lua
+config_files=("maps/fugitive.lua" "maps/navigation.lua" "default.lua" "maps.lua" "identation.lua" "backup.lua" "python.lua" "go.lua" "terraform.lua")
+
+for file in "${config_files[@]}"; do
+    /bin/ln "lua/configs/$file" "$HOME/.config/nvim/lua/configs/$file"
+done
+
+config_files=("coc.lua" "lazy.lua" "neo-tree.lua" "telescope.lua")
+
+for file in "${config_files[@]}"; do
+    /bin/ln "lua/plugins/$file" "$HOME/.config/nvim/lua/plugins/$file"
+done
 
 /bin/cp -R templates $HOME/.config/nvim
