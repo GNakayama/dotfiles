@@ -16,9 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 "vim-scripts/indentpython.vim",
 "ambv/black",
-
--- Show identation
-"Yggdroot/indentLine",
 -- Useful vim plugins
 "tpope/vim-commentary",
 "matze/vim-move",
@@ -26,6 +23,15 @@ require("lazy").setup({
 "tpope/vim-fugitive",
 "terryma/vim-multiple-cursors",
 "tmhedberg/SimpylFold",
+-- Show identation
+{
+    "Yggdroot/indentLine",
+    config = function()
+        vim.g.indentLine_enabled = 1
+        vim.g.indentLine_leadingSpaceEnabled = 1
+        vim.g.indentLine_leadingSpaceChar = '.'
+    end,
+},
 {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
@@ -78,12 +84,6 @@ require("lazy").setup({
         -- config in there
     })
 end},
-{
-  "neovim/nvim-lspconfig",
-  config = function()
-    require("lspconfig.pyright").setup({})
-  end,
-},
 {
   "pmizio/typescript-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },

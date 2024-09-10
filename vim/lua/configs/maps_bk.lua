@@ -27,9 +27,6 @@
 
 --autocmd BufWritePost *.py silent! execute ':call FormatPython()'
 
-
---let g:SimpylFold_docstring_preview=1
-
 ---- Go
 --let g:go_fmt_command = "goimports"
 --let g:go_metalinter_autosave = 1
@@ -49,27 +46,3 @@
 --endfunction
 
 --map <Leader>D :call InsertLine()<CR>
-
----- Powerline
---set laststatus=2
---set t_Co=256
---set statusline=%f
---set statusline+=\ %h%w%m%r
---set statusline+=%=
---set statusline+=%-16(%{exists('g:loaded_fugitive')?fugitive#statusline():''}\%)
---set statusline+=\ %P/%L
---set statusline+=\
-
---let g:move_key_modifier = 'A'
-
-----Remap
---noremap  <TAB> :tabp<CR>
---noremap  <S-TAB> :tabn<CR>
-
----- Keybindings
---noremap <esc>[1;5D <CLeft>
---inoremap <silent> <C-S> <C-C>:update<CR>
---noremap <silent> <C-S> :update<CR>
---noremap <silent> <CLeft-L> :copen<CR>
-
---let g:python3_host_prog = '/bin/python3'
