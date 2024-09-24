@@ -43,13 +43,28 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+# Android
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Rust
+export PATH=$PATH:$HOME/.cargo/bin
+
+# Go
 export PATH=$PATH:/usr/local/go/bin
+
+# SSH
 export GPG_TTY=$(tty)
-export PATH="~/.local/share/gem/ruby/3.0.0/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
-# Install Ruby Gems to ~/gems
+
+# Ruby
+export PATH="~/.local/share/gem/ruby/3.2.0/bin:$PATH"
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+
+# Lua
+export PATH="$HOME/.luarocks/bin:$PATH"
+export LUA_PATH="$HOME/development/projects/dotfiles/vim:$LUA_PATH"
 
 cdnvm() {
     command cd "$@" || return $?
@@ -141,10 +156,5 @@ bind -x '"[B":"zo"' # Alt + Down
 
 baseFontZoom="$zoomCommandPrefix$fontSize\""
 eval $baseFontZoom
-
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/.cargo/bin
 
 eval "$(direnv hook bash)"
