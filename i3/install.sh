@@ -14,6 +14,8 @@ sudo /bin/mv slick-greeter.conf /etc/lightdm/slick-greeter.conf
 # Background
 sudo /bin/mv backgrounds/bg.jpg /usr/share/backgrounds/bg.jpg
 sudo /bin/mv backgrounds/bg2.jpg /usr/share/backgrounds/bg2.jpg
+sudo /bin/mv backgrounds/bg3.jpg /usr/share/backgrounds/bg3.jpg
+
 nitrogen
 
 # Theme
@@ -26,6 +28,3 @@ sudo pacman -S noto-fonts-emoji
 
 lxappearance
 i3-msg restart
-
-
-
