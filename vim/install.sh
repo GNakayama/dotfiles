@@ -1,46 +1,67 @@
 #!/bin/bash
 
-# Creates backup directory
-if [ ! -d "$HOME/.vim/bundle/" ]; then
-	/bin/mkdir -p "$HOME/.vim/tmp/backup"
-fi
+# Function to create directories if they don't exist
+create_dirs() {
+    for dir in "$@"; do
+        [ ! -d "$dir" ] && /bin/mkdir -p "$dir"
+    done
+}
 
-# Creates undo directory
-if [ ! -d "$HOME/.vim/bundle/" ]; then
-	/bin/mkdir -p "$HOME/.vim/tmp/undo"
-fi
+# Function to link files
+link_files() {
+    local src_dir="$1"
+    local dest_dir="$2"
+    shift 2
+    
+    for file in "$@"; do
+        /bin/ln -f "$src_dir/$file" "$dest_dir/$file"
+    done
+}
 
-# Creates swap directory
-if [ ! -d "$HOME/.vim/bundle/" ]; then
-	/bin/mkdir -p "$HOME/.vim/tmp/swap"
-fi
-
-# Creates bundle directory
-if [ ! -d "$HOME/.vim/bundle/" ]; then
-	/bin/mkdir -p "$HOME/.vim/bundle"
-fi
-
-# Install Vundle plugin manager
-if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-	/bin/git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-fi
-
-if [ -f "$HOME/.vimrc" ]; then
-	/bin/rm "$HOME/.vimrc"
-fi
-
-if [ -f "$HOME/.vim/templates" ]; then
-	/bin/rm -r "$HOME/.vim/templates"
+# Install packages if not already installed
+if ! yay -Qi nvim 1> /dev/null 2>&1; then
+    yay -S neovim tree-sitter
 fi
 
 
-/bin/ln .vimrc $HOME/.vimrc
-/bin/ln -s $(/bin/pwd)/templates $HOME/.vim/templates
-/bin/vim +PluginInstall +qall
-
-# Install ctags if it is not installed
 if ! yay -Qi universal-ctags-git 1> /dev/null 2>&1; then
-	yay universal-ctags-git
+    yay -S universal-ctags-git
 fi
 
 sudo pacman -S python-pynvim
+
+# Create necessary directories
+create_dirs "$HOME/.vim/tmp/backup" \
+            "$HOME/.vim/tmp/undo" \
+            "$HOME/.vim/tmp/swap" \
+            "$HOME/.vim/bundle" \
+            "$HOME/.config/nvim" \
+            "$HOME/.config/nvim/lua/config/langs" \
+            "$HOME/.config/nvim/lua/config/maps" \
+            "$HOME/.config/nvim/lua/config/plugins"
+
+# Remove existing lua directory if it exists
+[ -d "$HOME/.config/nvim/lua" ] && /bin/rm -rf "$HOME/.config/nvim/lua"
+
+# Link main config files
+/bin/ln -f init.lua "$HOME/.config/nvim/init.lua"
+/bin/ln -f coc-settings.json "$HOME/.config/nvim/coc-settings.json"
+
+# Link configuration files by category
+link_files "lua/config" "$HOME/.config/nvim/lua/config" \
+    "backup.lua" "clipboard.lua" "helpers.lua" "identation.lua" "init.lua" "maps.lua"
+
+link_files "lua/config/langs" "$HOME/.config/nvim/lua/config/langs" \
+    "python.lua" "go.lua"
+
+link_files "lua/config/maps" "$HOME/.config/nvim/lua/config/maps" \
+    "fugitive.lua" "navigation.lua"
+
+link_files "lua/config/plugins" "$HOME/.config/nvim/lua/config/plugins" \
+    "coc.lua" "lazy.lua" "neo-tree.lua" "telescope.lua"
+
+# Copy templates directory
+/bin/cp -R templates "$HOME/.config/nvim"
+
+# Install Coc extensions
+/bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-sqlfluff coc-go coc-yaml coc-lua' +qall
