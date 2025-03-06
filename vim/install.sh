@@ -30,18 +30,17 @@ fi
 
 sudo pacman -S python-pynvim
 
+# Remove existing lua directory if it exists
+[ -d "$HOME/.config/nvim/lua" ] && /bin/rm -rf "$HOME/.config/nvim/lua"
+
 # Create necessary directories
 create_dirs "$HOME/.vim/tmp/backup" \
             "$HOME/.vim/tmp/undo" \
             "$HOME/.vim/tmp/swap" \
-            "$HOME/.vim/bundle" \
             "$HOME/.config/nvim" \
             "$HOME/.config/nvim/lua/config/langs" \
             "$HOME/.config/nvim/lua/config/maps" \
             "$HOME/.config/nvim/lua/config/plugins"
-
-# Remove existing lua directory if it exists
-[ -d "$HOME/.config/nvim/lua" ] && /bin/rm -rf "$HOME/.config/nvim/lua"
 
 # Link main config files
 /bin/ln -f init.lua "$HOME/.config/nvim/init.lua"
