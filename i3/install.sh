@@ -6,14 +6,16 @@
 xrdb $HOME/.Xresources
 
 sudo /bin/rm /etc/lightdm/slick-greeter.conf
-sudo /bin/mv slick-greeter.conf /etc/lightdm/slick-greeter.conf
+sudo /bin/cp slick-greeter.conf /etc/lightdm/slick-greeter.conf
 
 /bin/rm $HOME/.config/autostart/display-setup.sh
 /bin/ln display-setup.sh $HOME/.config/autostart/display-setup.sh
 
 # Background
-sudo /bin/mv backgrounds/bg.jpg /usr/share/backgrounds/bg.jpg
-sudo /bin/mv backgrounds/bg2.jpg /usr/share/backgrounds/bg2.jpg
+sudo /bin/cp backgrounds/bg.jpg /usr/share/backgrounds/bg.jpg
+sudo /bin/cp backgrounds/bg2.jpg /usr/share/backgrounds/bg2.jpg
+sudo /bin/cp backgrounds/bg3.jpg /usr/share/backgrounds/bg3.jpg
+
 nitrogen
 
 # Theme
@@ -26,6 +28,3 @@ sudo pacman -S noto-fonts-emoji
 
 lxappearance
 i3-msg restart
-
-
-
