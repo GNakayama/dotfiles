@@ -20,5 +20,6 @@
   "pyright.inlayHints.enable": false,
   "pyright.inlayHints.functionReturnTypes": false,
   "pyright.inlayHints.variableTypes": false,
-  "pyright.inlayHints.parameterTypes": false
+  "pyright.inlayHints.parameterTypes": false,
+  "tsserver.implicitProjectConfig.target": "ES6"
 }

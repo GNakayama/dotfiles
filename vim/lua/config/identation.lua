@@ -1,10 +1,11 @@
 vim.opt.encoding = 'utf-8'  --The encoding displayed
 vim.opt.fileencoding = 'utf-8'  -- The encoding written to file.
 vim.opt.hlsearch = true -- Highlight all search results
+vim.opt.incsearch = true
 vim.opt.spell = true
 
 -- -- Enable folding
-vim.opt.foldmethod = indent
+vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 
 vim.cmd("filetype plugin indent on") -- required
@@ -23,7 +24,7 @@ vim.opt.fileformat = "unix"
 vim.api.nvim_create_autocmd(
     {"BufNewFile" ,"BufRead"},
     {
-    pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.json", ".scss", ".css", ".html"},
+    pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.json", "*.scss", "*.css", "*.html"},
     callback = function()
         vim.opt.tabstop = 2
         vim.opt.softtabstop = 2
@@ -36,7 +37,7 @@ vim.cmd[[highlight BadWhitespace ctermbg=white]]
 vim.api.nvim_create_autocmd(
     {"BufRead", "BufNewFile"},
     {
-        pattern = {"*.py", "*html", "*.rb", "*.vim", "*.elm", "*.lua"},
+        pattern = {"*.py", "*.html", "*.rb", "*.vim", "*.elm", "*.lua"},
         callback = function()
             vim.cmd[[match BadWhitespace /\s\+$/]]
         end
@@ -50,6 +51,3 @@ vim.o.number = true
 vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.list = false
-
--- Color scheme
-vim.cmd[[colorscheme tokyonight-storm]]
