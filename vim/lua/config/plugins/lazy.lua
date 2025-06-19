@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugin setup
 return {
+	"zbirenbaum/copilot.lua",
 	"vim-scripts/indentpython.vim",
 	"ambv/black",
 	-- Useful vim plugins
