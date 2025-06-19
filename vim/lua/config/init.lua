@@ -63,3 +63,6 @@ require("lualine").setup{
 
 -- Colorscheme
 vim.cmd('colorscheme tokyonight')
+
+-- Copilot
+require("copilot").setup()
