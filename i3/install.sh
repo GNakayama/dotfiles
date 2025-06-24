@@ -25,6 +25,7 @@ sudo /bin/mv Tokyo-Night-Linux/usr/share/themes/TokyoNight /usr/share/themes/Tok
 
 yay -S numix-icon-theme-git
 sudo pacman -S noto-fonts-emoji
+sudo pacman -S ttf-mononoki-nerd
 
 lxappearance
 i3-msg restart
