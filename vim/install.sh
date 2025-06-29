@@ -54,7 +54,7 @@ link_files "lua/config/langs" "$HOME/.config/nvim/lua/config/langs" \
     "python.lua" "go.lua"
 
 link_files "lua/config/maps" "$HOME/.config/nvim/lua/config/maps" \
-    "fugitive.lua" "navigation.lua"
+    "fugitive.lua" "navigation.lua" "codecompanion.lua"
 
 link_files "lua/config/plugins" "$HOME/.config/nvim/lua/config/plugins" \
     "coc.lua" "lazy.lua" "neo-tree.lua" "telescope.lua"
@@ -63,4 +63,8 @@ link_files "lua/config/plugins" "$HOME/.config/nvim/lua/config/plugins" \
 /bin/cp -R templates "$HOME/.config/nvim"
 
 # Install Coc extensions
-/bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-sqlfluff coc-go coc-yaml coc-lua' +qall
+/bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-sqlfluff coc-go coc-yaml coc-lua coc-rust-analyzer' +qall
+npm i -g typescript typescript-language-server
+
+# codecompanion setup
+/bin/nvim +'TSInstall markdown markdown_inline'

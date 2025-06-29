@@ -66,3 +66,15 @@ vim.cmd('colorscheme tokyonight')
 
 -- Copilot
 require("copilot").setup()
+
+-- Codecompanion
+require("codecompanion").setup({
+  strategies = {
+    chat = {
+      adapter = "gemini",
+    },
+    inline = {
+      adapter = "gemini",
+    },
+  },
+})

@@ -1,4 +1,5 @@
 require("config.helpers")
+require('config.maps.codecompanion')
 require('config.maps.navigation')
 require('config.maps.fugitive')
 
