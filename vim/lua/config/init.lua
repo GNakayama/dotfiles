@@ -87,3 +87,6 @@ require("codecompanion").setup({
     },
   },
 })
+
+-- Elixir 
+require("elixir").setup()

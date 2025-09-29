@@ -63,7 +63,7 @@ link_files "lua/config/plugins" "$HOME/.config/nvim/lua/config/plugins" \
 /bin/cp -R templates "$HOME/.config/nvim"
 
 # Install Coc extensions
-/bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-sqlfluff coc-go coc-yaml coc-lua coc-rust-analyzer' +qall
+/bin/nvim +'CocInstall coc-python coc-css coc-html coc-json coc-tsserver coc-eslint coc-sqlfluff coc-go coc-yaml coc-lua coc-rust-analyzer coc-pyright' +qall
 npm i -g typescript typescript-language-server
 
 # codecompanion setup

@@ -37,7 +37,7 @@ vim.cmd[[highlight BadWhitespace ctermbg=white]]
 vim.api.nvim_create_autocmd(
     {"BufRead", "BufNewFile"},
     {
-        pattern = {"*.py", "*.html", "*.rb", "*.vim", "*.elm", "*.lua"},
+        pattern = {"*.py", "*.html", "*.rb", "*.vim", "*.elm", "*.lua, *.ex, *.exs"},
         callback = function()
             vim.cmd[[match BadWhitespace /\s\+$/]]
         end
