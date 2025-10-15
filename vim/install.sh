@@ -28,7 +28,7 @@ if ! yay -Qi universal-ctags-git 1> /dev/null 2>&1; then
     yay -S universal-ctags-git
 fi
 
-sudo pacman -S python-pynvim
+sudo pacman -S python-pynvim lazygit
 
 # Remove existing lua directory if it exists
 [ -d "$HOME/.config/nvim/lua" ] && /bin/rm -rf "$HOME/.config/nvim/lua"
