@@ -164,3 +164,6 @@ eval $baseFontZoom
 eval "$(direnv hook bash)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Conda
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
