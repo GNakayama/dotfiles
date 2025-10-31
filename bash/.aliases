@@ -42,3 +42,6 @@ alias setup-eks-production='aws eks update-kubeconfig --name reisift_production 
 alias setup-eks-staging='aws eks update-kubeconfig --name reisift_staging --region us-east-1'
 alias awsvpnclient='/opt/awsvpnclient/AWS\ VPN\ Client'
 alias vim=nvim
+
+alias activate-conda='source /opt/anaconda/bin/activate root'
+alias deactivate-conda='source /opt/anaconda/bin/deactivate root'

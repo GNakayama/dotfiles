@@ -49,7 +49,6 @@ return {
             vim.g.indentLine_leadingSpaceChar = '.'
         end,
     },
-
     -- Avante
     {
         "yetone/avante.nvim",
